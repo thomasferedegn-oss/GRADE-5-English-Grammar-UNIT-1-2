@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YT Tutorial Center | Grade 5 English Grammar Interactive Quiz</title>
+  <!-- Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans Ethiopic for crisp Amharic rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 50%, #fdf2f8 100%);
+      min-height: 100vh;
+    }
+    .ethiopic {
+      font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+    }
+    /* Custom scrollbar for question navigator */
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(8px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .animate-pop {
+      animation: popIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-indigo-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-600 to-purple-600 text-white flex items-center justify-center shadow-md font-extrabold text-lg tracking-tight">
+          YT
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">
+            YT Tutorial Center
+          </h1>
+          <p class="text-xs text-slate-500 font-medium">
+            Grade 5 English • Units 1 & 2 Comprehensive Grammar (60 Items)
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Controls: Narrator Toggle, Teacher Dashboard Button, and Required Timer -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <!-- British Female Narrator Control -->
+        <button id="narratorToggleBtn" onclick="toggleNarrator()" title="Toggle British Woman Narrator"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 transition shadow-sm">
+          <i id="narratorIcon" class="fa-solid fa-volume-high"></i>
+          <span id="narratorLabel" class="hidden sm:inline">UK Narrator: ON</span>
+        </button>
+
+        <!-- Teacher Results Dashboard Trigger -->
+        <button onclick="openTeacherModal()"
+          class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-white hover:bg-slate-700 transition shadow-sm">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span>Teacher Dashboard</span>
+          <span id="teacherBadgeCount" class="ml-1 px-1.5 py-0.5 text-xs bg-amber-400 text-slate-900 rounded-full font-bold">0</span>
+        </button>
+
+        <!-- Required Exact Timer Element -->
+        <div class="bg-red-50 border border-red-200 rounded-xl shadow-inner">
+          <div id="timer" style="text-align: right; font-weight: bold; color: #e74c3c; padding: 10px;"> Time: 80m </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+
+    <!-- Custom In-App Notification Banner (Replaces alert()) -->
+    <div id="toastBanner" class="hidden fixed bottom-5 right-5 z-50 max-w-md bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 animate-pop">
+      <i id="toastIcon" class="fa-solid fa-circle-info text-amber-400 text-lg"></i>
+      <p id="toastMessage" class="text-sm font-medium"></p>
+    </div>
+
+    <!-- ==================== VIEW 1: WELCOME & IDENTIFICATION SCREEN ==================== -->
+    <section id="startScreen" class="bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden animate-pop">
+      <div class="bg-gradient-to-r from-indigo-600 via-blue-600 to-violet-600 px-6 py-8 sm:px-10 sm:py-10 text-white">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-xs font-semibold uppercase tracking-wider mb-3">
+          <i class="fa-solid fa-graduation-cap"></i> Interactive Assessment Portal • Tel: 0967029123
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">
+          Grade 5 English Grammar Examination
+        </h2>
+        <p class="text-indigo-100 text-sm sm:text-base max-w-2xl">
+          Comprehensive 60-Question Multiple-Choice Assessment strictly covering <strong>Unit 1 (Holidays)</strong> and <strong>Unit 2 (Dry Season)</strong>.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-10">
+        <!-- Exam Rules & Features Highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">Irreversible Instant Feedback</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Selecting an option locks your choice immediately and reveals the right answer.</p>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-language"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">Bilingual Explanations</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Every item provides detailed grammar explanations in both English & Amharic.</p>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-100 flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">British Woman Narrator</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Dedicated UK female voice reads each question and feedback clearly aloud.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Identification Form -->
+        <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-id-card text-indigo-600"></i> Student Identification
+          </h3>
+          <p class="text-xs text-slate-500 mb-5">Please enter your Full Name and ID Number accurately before starting the 80-minute quiz.</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="studentName" class="block text-sm font-bold text-slate-700 mb-1.5">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input type="text" id="studentName" placeholder="e.g., Abebe Kebede Tadesse"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium transition" />
+              </div>
+            </div>
+
+            <div>
+              <label for="studentId" class="block text-sm font-bold text-slate-700 mb-1.5">
+                Student ID Number <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-hashtag"></i>
+                </span>
+                <input type="text" id="studentId" placeholder="e.g., YT-G5-0142"
+                  class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium transition" />
+              </div>
+            </div>
+          </div>
+
+          <p id="idErrorMsg" class="hidden text-red-600 text-xs font-semibold mt-3 flex items-center gap-1.5">
+            <i class="fa-solid fa-triangle-exclamation"></i> Please enter both your Full Name and ID Number to begin.
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-slate-500 flex items-center gap-2">
+              <i class="fa-solid fa-clock text-indigo-600"></i>
+              <span>Duration: <strong>80 Minutes</strong> • Total Questions: <strong>60 Items</strong></span>
+            </div>
+            <button id="startQuizBtn" onclick="startQuiz()"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-base shadow-lg shadow-indigo-200 flex items-center justify-center gap-2.5 transition transform active:scale-95">
+              <span>Start Quiz</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: ACTIVE QUIZ INTERFACE ==================== -->
+    <section id="quizScreen" class="hidden space-y-5">
+
+      <!-- Student & Progress Top Bar -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-md border border-indigo-100">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-slate-900" id="displayStudentName">Student Name</div>
+              <div class="text-xs text-slate-500">ID: <span id="displayStudentId" class="font-semibold text-slate-700">---</span></div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs sm:text-sm">
+            <span class="px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">
+              <i class="fa-solid fa-check-circle mr-1"></i> Score: <span id="liveScore">0</span>/60
+            </span>
+            <span class="px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-bold">
+              Answered: <span id="answeredCount">0</span>/60
+            </span>
+          </div>
+        </div>
+
+        <!-- Visual Progress Bar -->
+        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+          <div id="progressBar" class="bg-gradient-to-r from-indigo-600 to-emerald-500 h-full rounded-full transition-all duration-300" style="width: 1.66%;"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div id="questionCard" class="bg-white rounded-3xl shadow-xl border border-indigo-100 p-6 sm:p-8 animate-pop">
+        <!-- Question Header Metadata -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span id="qNumberBadge" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-sm shadow-sm">
+              Question 1 of 60
+            </span>
+            <span id="qUnitBadge" class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-700 border border-purple-200 font-semibold text-xs">
+              Unit 1: Holidays
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span id="lockStatusBadge" class="hidden px-3 py-1 rounded-xl bg-slate-100 text-slate-600 text-xs font-semibold">
+              <i class="fa-solid fa-lock mr-1"></i> Answer Locked
+            </span>
+            <button onclick="narrateCurrentQuestion()"
+              class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-Volume-up fa-volume-high"></i> Read Aloud (UK)
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Prompt -->
+        <div class="mb-6">
+          <h3 id="questionText" class="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
+            Question stem loads here...
+          </h3>
+        </div>
+
+        <!-- Clickable Option Buttons (Matching items featured with clickable buttons) -->
+        <div id="optionsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <!-- Dynamically populated option buttons -->
+        </div>
+
+        <!-- Instant Feedback & Bilingual Explanation Panel -->
+        <div id="feedbackPanel" class="hidden mt-6 rounded-2xl p-5 border-2 animate-pop">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <div id="feedbackBannerTitle" class="flex items-center gap-2 font-extrabold text-base sm:text-lg">
+              <!-- Correct or Incorrect badge -->
+            </div>
+            <button onclick="narrateCurrentExplanation()"
+              class="px-3 py-1 rounded-lg bg-white/80 hover:bg-white text-slate-700 border border-slate-200 text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+              <i class="fa-solid fa-headphones"></i> Listen Explanation
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <!-- English Explanation -->
+            <div class="bg-white/90 p-4 rounded-xl border border-slate-200/80 shadow-sm">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-600 mb-1 flex items-center gap-1.5">
+                <i class="fa-solid fa-book-open"></i> English Explanation
+              </div>
+              <p id="explanationEn" class="text-slate-700 leading-relaxed"></p>
+            </div>
+
+            <!-- Amharic Explanation -->
+            <div class="bg-white/90 p-4 rounded-xl border border-slate-200/80 shadow-sm ethiopic">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 mb-1 flex items-center gap-1.5">
+                <i class="fa-solid fa-language"></i> የአማርኛ ማብራሪያ (Amharic)
+              </div>
+              <p id="explanationAm" class="text-slate-800 leading-relaxed font-medium"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls: Back, Jump Next / Skip, and Submit -->
+        <div class="mt-8 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <button id="backBtn" onclick="prevQuestion()"
+            class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:pointer-events-none text-slate-800 font-bold text-sm flex items-center gap-2 transition">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
+          </button>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button id="skipBtn" onclick="skipQuestion()"
+              class="px-4 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-sm flex items-center gap-2 transition">
+              <i class="fa-solid fa-forward"></i>
+              <span>Skip / Jump Next Unanswered</span>
+            </button>
+
+            <button id="nextBtn" onclick="nextQuestion()"
+              class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm flex items-center gap-2 shadow-md shadow-indigo-100 transition">
+              <span>Next</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <button id="submitBtn" onclick="confirmAndSubmitQuiz()"
+              class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold text-sm flex items-center gap-2 shadow-lg shadow-emerald-200 transition">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit Quiz</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Palette / Quick Jump Grid -->
+      <div class="bg-white rounded-2xl p-5 shadow-md border border-indigo-100">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+            Question Navigator (Click any number to jump)
+          </h4>
+          <div class="flex items-center gap-3 text-xs font-medium text-slate-600">
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Correct</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-rose-500 inline-block"></span> Wrong</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-200 inline-block"></span> Unanswered</span>
+          </div>
+        </div>
+        <div id="questionGrid" class="grid grid-cols-10 sm:grid-cols-15 md:grid-cols-20 gap-1.5 max-h-44 overflow-y-auto custom-scroll p-1">
+          <!-- Dynamically populated 1..60 buttons -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== VIEW 3: AUTO-GRADED RESULTS & EMAIL SUBMISSION ==================== -->
+    <section id="resultScreen" class="hidden space-y-6 animate-pop">
+      <div class="bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-900 to-blue-900 px-6 py-8 sm:px-10 text-white text-center">
+          <div class="w-16 h-16 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold">Examination Completed & Auto-Graded</h2>
+          <p class="text-indigo-200 text-sm mt-1">YT Tutorial Center • Grade 5 English (Units 1 & 2)</p>
+        </div>
+
+        <div class="p-6 sm:p-10">
+          <!-- Student Info Summary -->
+          <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-6">
+            <div>
+              <span class="text-xs text-slate-500 uppercase font-bold">Examinee Name</span>
+              <div id="resName" class="text-base font-extrabold text-slate-900">-</div>
+            </div>
+            <div>
+              <span class="text-xs text-slate-500 uppercase font-bold">Student ID</span>
+              <div id="resId" class="text-base font-extrabold text-indigo-700">-</div>
+            </div>
+            <div>
+              <span class="text-xs text-slate-500 uppercase font-bold">Time Taken</span>
+              <div id="resTimeTaken" class="text-base font-extrabold text-slate-800">-</div>
+            </div>
+            <div>
+              <span class="text-xs text-slate-500 uppercase font-bold">Grade Status</span>
+              <div id="resStatus" class="text-base font-extrabold text-emerald-600">-</div>
+            </div>
+          </div>
+
+          <!-- Score Metrics Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-100 text-center">
+              <div class="text-xs font-bold text-indigo-600 uppercase">Total Score</div>
+              <div id="resScoreFraction" class="text-2xl sm:text-3xl font-extrabold text-indigo-900 mt-1">0 / 60</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+              <div class="text-xs font-bold text-emerald-600 uppercase">Percentage</div>
+              <div id="resPercentage" class="text-2xl sm:text-3xl font-extrabold text-emerald-800 mt-1">0%</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-rose-50 border border-rose-100 text-center">
+              <div class="text-xs font-bold text-rose-600 uppercase">Incorrect</div>
+              <div id="resWrongCount" class="text-2xl sm:text-3xl font-extrabold text-rose-800 mt-1">0</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+              <div class="text-xs font-bold text-amber-700 uppercase">Unanswered</div>
+              <div id="resSkippedCount" class="text-2xl sm:text-3xl font-extrabold text-amber-900 mt-1">0</div>
+            </div>
+          </div>
+
+          <!-- Email Submission Action Box -->
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-indigo-200 mb-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                  <i class="fa-solid fa-envelope-circle-check text-indigo-600 text-xl"></i>
+                  Send Official Score Report to Teacher
+                </h3>
+                <p class="text-xs text-slate-600 mt-1">
+                  Submit your score report directly to <strong class="text-indigo-700">mesayferedegn2@gmail.com</strong> or copy the formatted report.
+                </p>
+              </div>
+              <div class="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+                <button onclick="sendScoreViaEmail()"
+                  class="flex-1 md:flex-none px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 transition">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Email Score Now</span>
+                </button>
+                <button onclick="copyScoreReport()"
+                  class="flex-1 md:flex-none px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-sm flex items-center justify-center gap-2 transition">
+                  <i class="fa-solid fa-copy"></i>
+                  <span>Copy Report</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <button onclick="toggleReviewList()"
+              class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm flex items-center gap-2 transition">
+              <i class="fa-solid fa-list-check"></i>
+              <span id="reviewToggleText">Review All 60 Questions & Explanations</span>
+            </button>
+
+            <div class="flex items-center gap-2.5">
+              <button onclick="openTeacherModal()"
+                class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-table-columns"></i>
+                <span>Open Teacher Dashboard</span>
+              </button>
+              <button onclick="resetForNewStudent()"
+                class="px-5 py-2.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-bold text-sm flex items-center gap-2 transition">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>New Examinee</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Full 60-Question Review Section -->
+          <div id="fullReviewContainer" class="hidden mt-8 pt-6 border-t border-slate-200 space-y-4">
+            <h3 class="text-lg font-extrabold text-slate-900">Detailed Question-by-Question Review (English & Amharic)</h3>
+            <div id="reviewItemsList" class="space-y-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== TEACHER NOTIFICATION / RESULTS DASHBOARD MODAL ==================== -->
+  <div id="teacherModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden animate-pop">
+      <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-lg">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-extrabold">Teacher Results & Notification Dashboard</h3>
+            <p class="text-xs text-slate-300">Recipient Email: mesayferedegn2@gmail.com • YT Tutorial Center (0967029123)</p>
+          </div>
+        </div>
+        <button onclick="closeTeacherModal()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto custom-scroll space-y-5 flex-1">
+        <!-- Summary Stats for Teacher -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-100">
+            <div class="text-xs font-bold text-indigo-600 uppercase">Total Examinees Recorded</div>
+            <div id="tdTotalStudents" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-100">
+            <div class="text-xs font-bold text-emerald-600 uppercase">Class Average Score</div>
+            <div id="tdAvgScore" class="text-2xl font-extrabold text-emerald-800 mt-1">0%</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-100">
+            <div class="text-xs font-bold text-amber-700 uppercase">Highest Score</div>
+            <div id="tdHighScore" class="text-2xl font-extrabold text-amber-900 mt-1">0 / 60</div>
+          </div>
+        </div>
+
+        <!-- Student Results Table -->
+        <div class="border border-slate-200 rounded-2xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 text-xs uppercase font-extrabold border-b border-slate-200">
+                  <th class="py-3 px-4">#</th>
+                  <th class="py-3 px-4">Student Full Name</th>
+                  <th class="py-3 px-4">ID Number</th>
+                  <th class="py-3 px-4">Score</th>
+                  <th class="py-3 px-4">Percentage</th>
+                  <th class="py-3 px-4">Submitted At</th>
+                  <th class="py-3 px-4 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="teacherTableBody" class="divide-y divide-slate-100">
+                <tr>
+                  <td colspan="7" class="py-8 text-center text-slate-400 text-sm">
+                    No student submissions recorded yet in this session.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+        <button onclick="exportTeacherCSV()"
+          class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition">
+          <i class="fa-solid fa-file-csv"></i> Download CSV Summary
+        </button>
+        <button onclick="closeTeacherModal()"
+          class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs transition">
+          Close Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal for Early Submission -->
+  <div id="confirmSubmitModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-md w-full p-6 animate-pop">
+      <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+      <h3 class="text-xl font-extrabold text-slate-900 mb-2">Submit Your Quiz?</h3>
+      <p id="confirmSubmitText" class="text-sm text-slate-600 mb-6">
+        Are you sure you want to submit your answers now for final grading?
+      </p>
+      <div class="flex items-center justify-end gap-3">
+        <button onclick="closeConfirmModal()"
+          class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm transition">
+          Continue Quiz
+        </button>
+        <button onclick="finalizeQuizSubmission()"
+          class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition">
+          Yes, Submit Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==================== COMPLETE 60-ITEM QUESTION BANK (UNITS 1 & 2) ====================
+    // Every question includes: id, unit, stem, options (A-D), correct index (0-3), explanationEn, explanationAm
+    const quizData = [
+      // --- UNIT 1: CONTRACTIONS & SIMPLE PRESENT AFFIRMATIVE ---
+      {
+        id: 1,
+        unit: "Unit 1: Holidays",
+        stem: 'Choose the correct contracted form of "I am" in: "Hello, _____ Koketi."',
+        options: ["I'm", "Im", "I's", "I're"],
+        correct: 0,
+        explanationEn: 'The correct contracted (short) form of "I am" is "I\'m", using an apostrophe (\') to replace the omitted letter "a".',
+        explanationAm: 'የ "I am" ትክክለኛው አጭር አጻጻፍ (contraction) "I\'m" ነው፤ የቀረውን "a" ፊደል ለመተካት አፖስትሮፊ (\') እንጠቀማለን።'
+      },
+      {
+        id: 2,
+        unit: "Unit 1: Holidays",
+        stem: 'Which sentence uses the correct contraction for "They are"?',
+        options: ["Their from Gambella.", "They're from Gambella.", "There from Gambella.", "They's from Gambella."],
+        correct: 1,
+        explanationEn: '"They\'re" is the contraction of "They are". "Their" shows possession, and "There" refers to a place.',
+        explanationAm: '"They\'re" የ "They are" አጭር ቅርጽ ነው። "Their" ባለቤትነትን ሲያሳይ "There" ደግሞ ቦታን ያመለክታል።'
+      },
+      {
+        id: 3,
+        unit: "Unit 1: Holidays",
+        stem: 'Select the correct contracted form to complete: "_____ your name?"',
+        options: ["Whats", "What're", "What's", "Who's"],
+        correct: 2,
+        explanationEn: '"What\'s" is the contracted form of "What is" (What\'s your name? = What is your name?).',
+        explanationAm: '"What\'s" የ "What is" አጭር ቅርጽ ነው (What\'s your name? ማለት ስምህ/ሽ ማን ነው? ማለት ነው)።'
+      },
+      {
+        id: 4,
+        unit: "Unit 1: Holidays",
+        stem: 'Which contracted form correctly replaces "We are" in "We are all Ethiopians"?',
+        options: ["We's", "We'm", "Were", "We're"],
+        correct: 3,
+        explanationEn: '"We\'re" is the contraction of "We are", formed by omitting "a" and inserting an apostrophe.',
+        explanationAm: '"We\'re" የ "We are" አጭር ቅርጽ ሲሆን "a" ፊደልን በማስቀረት እና አፖስትሮፊ በማስገባት ይመሰረታል።'
+      },
+      {
+        id: 5,
+        unit: "Unit 1: Holidays",
+        stem: "Doctor Gome _____ his job very much.",
+        options: ["loves", "love", "loving", "loved"],
+        correct: 0,
+        explanationEn: 'In the Simple Present Tense, third-person singular subjects (Doctor Gome = he) take "-s" on the base verb: "loves".',
+        explanationAm: 'በ Simple Present Tense ለሦስተኛ መደብ ነጠላ ባለቤት (Doctor Gome = he) ግሱ ላይ "-s" እንጨምራለን፤ ስለዚህ "loves" ትክክል ነው።'
+      },
+      {
+        id: 6,
+        unit: "Unit 1: Holidays",
+        stem: "Chala _____ ants in his science class every week.",
+        options: ["study", "studies", "studys", "studying"],
+        correct: 1,
+        explanationEn: 'When a verb ends in a consonant + "y" (study), we change "y" to "i" and add "-es" for he/she/it: "studies".',
+        explanationAm: 'አንድ ግስ በተነባቢ ፊደል እና በ "y" ሲጨርስ (study)፣ ለሦስተኛ መደብ ነጠላ "y"ን ወደ "i" ቀይረን "-es" እንጨምራለን ("studies")።'
+      },
+      {
+        id: 7,
+        unit: "Unit 1: Holidays",
+        stem: "A salesperson _____ products for a company.",
+        options: ["sell", "selling", "sells", "sold"],
+        correct: 2,
+        explanationEn: '"A salesperson" is a singular subject (he/she), so we add "-s" to the verb "sell" in the Simple Present Tense ("sells").',
+        explanationAm: '"A salesperson" ነጠላ ባለቤት ስለሆነ በ Simple Present Tense ግሱ ላይ "-s" ተጨምሮ "sells" ይሆናል።'
+      },
+      {
+        id: 8,
+        unit: "Unit 1: Holidays",
+        stem: "Liban and I _____ together at weekends.",
+        options: ["works", "working", "worked", "work"],
+        correct: 3,
+        explanationEn: '"Liban and I" equals the plural subject "we". With I/we/you/they, we use the base infinitive verb without "-s": "work".',
+        explanationAm: '"Liban and I" ብዙ ቁጥር ("we") ስለሆነ ግሱ ያለ "-s" በመጀመሪያ ቅርጹ ("work") ይቀመጣል።'
+      },
+      {
+        id: 9,
+        unit: "Unit 1: Holidays",
+        stem: "Volunteers _____ people in their community during holidays.",
+        options: ["help", "helps", "helping", "helped"],
+        correct: 0,
+        explanationEn: '"Volunteers" is a plural noun (they), so the Simple Present verb takes no "-s": "help".',
+        explanationAm: '"Volunteers" ብዙ ቁጥር (they) ስለሆነ ግሱ "-s" አይወስድም፤ ስለዚህ "help" ትክክለኛ መልስ ነው።'
+      },
+      {
+        id: 10,
+        unit: "Unit 1: Holidays",
+        stem: "Our office _____ at 7:00 p.m. every evening.",
+        options: ["close", "closes", "closing", "closies"],
+        correct: 1,
+        explanationEn: '"Our office" is singular (it). Regular verbs ending in "-e" simply add "-s" in the Simple Present: "closes".',
+        explanationAm: '"Our office" ነጠላ (it) ስለሆነ እና ግሱ በ "-e" ስለሚጨርስ "-s" ብቻ በመጨመር "closes" ይሆናል።'
+      },
+      {
+        id: 11,
+        unit: "Unit 1: Holidays",
+        stem: "Hawi _____ classes at a business school.",
+        options: ["take", "taking", "takes", "took"],
+        correct: 2,
+        explanationEn: '"Hawi" is third-person singular (she), so the Simple Present verb requires "-s": "takes".',
+        explanationAm: '"Hawi" ለሦስተኛ መደብ ነጠላ (she) ስለምትወክል ግሱ "-s" ወስዶ "takes" ይሆናል።'
+      },
+      {
+        id: 12,
+        unit: "Unit 1: Holidays",
+        stem: "Banks and clinics _____ work at 8:00 a.m. every morning.",
+        options: ["starts", "starting", "started", "start"],
+        correct: 3,
+        explanationEn: '"Banks and clinics" is a compound plural subject (they), so we use the base verb "start".',
+        explanationAm: '"Banks and clinics" ብዙ ቁጥር (they) ስለሆነ ግሱ ያለ "-s" "start" ይሆናል።'
+      },
+      {
+        id: 13,
+        unit: "Unit 1: Holidays",
+        stem: "Then, Samy _____ his clothes for the holiday in the afternoon.",
+        options: ["washes", "wash", "washs", "washing"],
+        correct: 0,
+        explanationEn: 'Verbs ending in "-sh" (like "wash") add "-es" in the third-person singular Simple Present: "washes".',
+        explanationAm: 'በ "-sh" የሚጨርሱ ግሶች (ለምሳሌ "wash") ለሦስተኛ መደብ ነጠላ "-es" ይጨምራሉ ("washes")።'
+      },
+      {
+        id: 14,
+        unit: "Unit 1: Holidays",
+        stem: "The eldest of the villagers first _____ the campfire on the eve of Enkutatash.",
+        options: ["light", "lights", "lighting", "lightes"],
+        correct: 1,
+        explanationEn: '"The eldest of the villagers" refers to one person (he/she), so we add "-s" to "light" -> "lights".',
+        explanationAm: '"The eldest of the villagers" አንድን ሰው (ነጠላ) ስለሚያመለክት "light" ላይ "-s" ተጨምሮ "lights" ይሆናል።'
+      },
+      {
+        id: 15,
+        unit: "Unit 1: Holidays",
+        stem: "A young girl _____ and serves coffee to the guests.",
+        options: ["make", "making", "makes", "maked"],
+        correct: 2,
+        explanationEn: '"A young girl" is singular (she), matching "serves". Therefore, "make" must also take "-s": "makes".',
+        explanationAm: '"A young girl" ነጠላ ባለቤት ስለሆነች ከ "serves" ጋር በሚመሳሰል መልኩ "makes" መሆን አለበት።'
+      },
+      {
+        id: 16,
+        unit: "Unit 1: Holidays",
+        stem: 'Change the verb "carry" into the third-person singular Simple Present form:',
+        options: ["carrys", "carryes", "carrying", "carries"],
+        correct: 3,
+        explanationEn: 'Because "carry" ends in a consonant ("r") + "y", change "y" to "i" and add "-es" -> "carries".',
+        explanationAm: '"carry" በተነባቢ ፊደል ("r") እና በ "y" ስለሚጨርስ "y"ን ወደ "i" ቀይረን "-es" ስንጨምር "carries" ይሆናል።'
+      },
+      {
+        id: 17,
+        unit: "Unit 1: Holidays",
+        stem: 'Which verb adds "-es" in the third-person singular Simple Present Tense?',
+        options: ["relax", "ask", "cover", "close"],
+        correct: 0,
+        explanationEn: 'Verbs ending in -sh, -ch, -s, -x, or -o add "-es". Since "relax" ends in "-x", it becomes "relaxes".',
+        explanationAm: 'በ -sh, -ch, -s, -x, ወይም -o የሚጨርሱ ግሶች "-es" ይወስዳሉ። "relax" በ "-x" ስለሚጨርስ "relaxes" ይሆናል።'
+      },
+      {
+        id: 18,
+        unit: "Unit 1: Holidays",
+        stem: "When the fire _____ down, all the villagers go home happily.",
+        options: ["burn", "burns", "burnes", "burning"],
+        correct: 1,
+        explanationEn: '"The fire" is singular (it), so the regular verb "burn" takes "-s": "burns".',
+        explanationAm: '"The fire" ነጠላ (it) ስለሆነ "burn" ላይ "-s" ተጨምሮ "burns" ይሆናል።'
+      },
+
+      // --- UNIT 1: SIMPLE PRESENT NEGATIVE & INTERROGATIVE ---
+      {
+        id: 19,
+        unit: "Unit 1: Holidays",
+        stem: "All Ethiopians _____ celebrate the New Year at the exact same time.",
+        options: ["doesn't", "aren't", "do not", "is not"],
+        correct: 2,
+        explanationEn: '"All Ethiopians" is plural (they). To make a negative with an action verb ("celebrate"), we use "do not / don\'t".',
+        explanationAm: '"All Ethiopians" ብዙ ቁጥር ስለሆነ ከድርጊት ግስ ("celebrate") በፊት አሉታዊ ለማድረግ "do not / don\'t" እንጠቀማለን።'
+      },
+      {
+        id: 20,
+        unit: "Unit 1: Holidays",
+        stem: "Our English teacher _____ tolerate cheating during exams.",
+        options: ["don't", "isn't", "aren't", "doesn't"],
+        correct: 3,
+        explanationEn: '"Our English teacher" is third-person singular (he/she), so the Simple Present negative auxiliary is "does not / doesn\'t".',
+        explanationAm: '"Our English teacher" ነጠላ ባለቤት ስለሆነ በ Simple Present አሉታዊ ዓረፍተ ነገር "does not / doesn\'t" እንጠቀማለን።'
+      },
+      {
+        id: 21,
+        unit: "Unit 1: Holidays",
+        stem: 'Which negative form of "I am" is grammatically correct?',
+        options: ["I am not", "I amn't", "I aren't", "I doesn't"],
+        correct: 0,
+        explanationEn: 'As highlighted in Unit 1 Grammar Focus, "am not" has no contracted form ("amn\'t" is incorrect). Always use "I am not".',
+        explanationAm: 'በምዕራፍ 1 ሰዋስው መሠረት "am not" አጭር ቅርጽ የለውም ("amn\'t" ስህተት ነው)። ሁልጊዜ "I am not" እንላለን።'
+      },
+      {
+        id: 22,
+        unit: "Unit 1: Holidays",
+        stem: "Rahel _____ in Section A; she learns in Section B.",
+        options: ["aren't", "isn't", "doesn't", "don't"],
+        correct: 1,
+        explanationEn: 'There is no main action verb in the first clause, so we use the negative form of "to be" for singular Rahel: "is not / isn\'t".',
+        explanationAm: 'በመጀመሪያው ሐረግ ውስጥ ዋና የድርጊት ግስ ስለሌለ ለነጠላዋ ራሔል የ "to be" አሉታዊ ቅርጽ "is not / isn\'t" እንጠቀማለን።'
+      },
+      {
+        id: 23,
+        unit: "Unit 1: Holidays",
+        stem: "The woman _____ eggs in her new shop on Sundays.",
+        options: ["don't sell", "isn't sell", "doesn't sell", "not sells"],
+        correct: 2,
+        explanationEn: 'For singular subjects ("The woman"), use "doesn\'t + base verb (sell)" without "-s" on the main verb.',
+        explanationAm: 'ለነጠላ ባለቤት ("The woman") "doesn\'t + ዋና ግስ ያለ -s (sell)" እንጠቀማለን፤ ስለዚህ "doesn\'t sell" ትክክል ነው።'
+      },
+      {
+        id: 24,
+        unit: "Unit 1: Holidays",
+        stem: "We _____ eager to watch that film tonight.",
+        options: ["isn't", "doesn't", "don't", "aren't"],
+        correct: 3,
+        explanationEn: '"Eager" is an adjective, so we use the plural negative form of "to be" with "We": "are not / aren\'t".',
+        explanationAm: '"Eager" ቅጽል ስለሆነ ከ "We" ጋር የ "to be" አሉታዊ ቅርጽ "are not / aren\'t" እንጠቀማለን።'
+      },
+      {
+        id: 25,
+        unit: "Unit 1: Holidays",
+        stem: "_____ Heran clean her room every day?",
+        options: ["Does", "Do", "Is", "Are"],
+        correct: 0,
+        explanationEn: 'To form a Simple Present question with a singular subject ("Heran") and base verb ("clean"), start with "Does".',
+        explanationAm: 'በ Simple Present Tense ነጠላ ባለቤት ("Heran") እና ዋና ግስ ("clean") ሲኖር ጥያቄ ለመመስረት በ "Does" እንጀምራለን።'
+      },
+      {
+        id: 26,
+        unit: "Unit 1: Holidays",
+        stem: "_____ the children play football on Sundays?",
+        options: ["Does", "Do", "Are", "Is"],
+        correct: 1,
+        explanationEn: '"The children" is a plural noun (they), so we start the Simple Present question with "Do".',
+        explanationAm: '"The children" ብዙ ቁጥር (they) ስለሆነ የ Simple Present ጥያቄን በ "Do" እንጀምራለን።'
+      },
+      {
+        id: 27,
+        unit: "Unit 1: Holidays",
+        stem: "_____ the market place too far from your village?",
+        options: ["Do", "Does", "Is", "Are"],
+        correct: 2,
+        explanationEn: 'For questions without an action verb ("too far"), place the singular "to be" verb ("Is") at the beginning.',
+        explanationAm: 'የድርጊት ግስ በሌለበት ጥያቄ ("too far") ለነጠላ ባለቤት "Is"ን በመጀመሪያ ላይ እናስቀምጣለን።'
+      },
+      {
+        id: 28,
+        unit: "Unit 1: Holidays",
+        stem: "Which negative question in the Simple Present Tense is grammatically correct?",
+        options: ["Amn't I in the class list?", "Doesn't you love stories?", "Don't she come regularly?", "Am I not in the class list?"],
+        correct: 3,
+        explanationEn: 'Because "am not" cannot be contracted, the correct negative question for "I" is "Am I not in the class list?".',
+        explanationAm: '"am not" በአጭሩ ስለማይጻፍ ለ "I" ትክክለኛው አሉታዊ ጥያቄ "Am I not in the class list?" የሚለው ነው።'
+      },
+      {
+        id: 29,
+        unit: "Unit 1: Holidays",
+        stem: "_____ Elisa come to class regularly every morning?",
+        options: ["Doesn't", "Don't", "Isn't", "Aren't"],
+        correct: 0,
+        explanationEn: '"Elisa" is third-person singular (she), and "come" is the base verb, so the negative question starts with "Doesn\'t".',
+        explanationAm: '"Elisa" ሦስተኛ መደብ ነጠላ (she) ስለሆነች እና "come" ዋና ግስ ስለሆነ አሉታዊ ጥያቄው በ "Doesn\'t" ይጀምራል።'
+      },
+      {
+        id: 30,
+        unit: "Unit 1: Holidays",
+        stem: "_____ there plenty of yellow flowers in the garden?",
+        options: ["Is", "Are", "Do", "Does"],
+        correct: 1,
+        explanationEn: '"Plenty of yellow flowers" is plural, so we use the plural verb "Are" at the start of the question.',
+        explanationAm: '"Plenty of yellow flowers" ብዙ ቁጥር ስለሆነ ጥያቄውን በ "Are" እንጀምራለን።'
+      },
+
+      // --- UNIT 1: DEGREES OF COMPARISON (1-SYLLABLE ADJECTIVES) ---
+      {
+        id: 31,
+        unit: "Unit 1: Holidays",
+        stem: "Amenu is 1.5 m tall and Beka is 1.5 m tall. Amenu is _____ Beka.",
+        options: ["taller than", "tallest", "as tall as", "not tall as"],
+        correct: 2,
+        explanationEn: 'When two people are equal in quality, we use the positive degree structure: "as + adjective + as" ("as tall as").',
+        explanationAm: 'ሁለት ሰዎች በአንድ ባህሪ እኩል ሲሆኑ የ Positive degree መዋቅር "as + ቅጽል + as" ("as tall as") እንጠቀማለን።'
+      },
+      {
+        id: 32,
+        unit: "Unit 1: Holidays",
+        stem: "Which sentence shows that two things are NOT equal in quality?",
+        options: ["He is so happy as Rami.", "Hawassa is as hot as Bahir Dar.", "This stone is as big as that one.", "Silver is not as heavy as gold."],
+        correct: 3,
+        explanationEn: 'To show inequality using the positive degree, we use "not as/so + adjective + as" ("Silver is not as heavy as gold").',
+        explanationAm: 'ሁለት ነገሮች እኩል አለመሆናቸውን ለማሳየት "not as/so + ቅጽል + as" ("Silver is not as heavy as gold") እንጠቀማለን።'
+      },
+      {
+        id: 33,
+        unit: "Unit 1: Holidays",
+        stem: "Abenezer is 9 years old and Jifare is 11 years old. Abenezer is _____ Jifare.",
+        options: ["younger than", "older than", "as old as", "the youngest"],
+        correct: 0,
+        explanationEn: 'Comparing two unequal people (9 vs. 11 years old) uses the comparative degree + "than": "younger than".',
+        explanationAm: 'ሁለት ያልተመጣጠኑ ሰዎችን (9 እና 11 ዓመት) ስናወዳድር Comparative degree + "than" ("younger than") እንጠቀማለን።'
+      },
+      {
+        id: 34,
+        unit: "Unit 1: Holidays",
+        stem: "Very old laptops are a lot _____ the new ones.",
+        options: ["big than", "bigger than", "biggest than", "as big"],
+        correct: 1,
+        explanationEn: '"Big" has a consonant-vowel-consonant (CVC) pattern, so we double the final "g" and add "-er" + "than" -> "bigger than".',
+        explanationAm: '"Big" በ CVC ፊደላት ስለሚዋቀር የመጨረሻውን "g" እጥፍ በማድረግ "-er" እና "than" እንጨምራለን ("bigger than")።'
+      },
+      {
+        id: 35,
+        unit: "Unit 1: Holidays",
+        stem: "Summer in the lowlands is _____ winter.",
+        options: ["hoter than", "the hottest", "hotter than", "as hot"],
+        correct: 2,
+        explanationEn: '"Hot" follows the consonant-vowel-consonant spelling rule, doubling "t" before "-er": "hotter than".',
+        explanationAm: '"Hot" በ CVC ህግ መሠረት "t"ን እጥፍ በማድረግ "-er" ይወስዳል፤ ስለዚህ "hotter than" ትክክል ነው።'
+      },
+      {
+        id: 36,
+        unit: "Unit 1: Holidays",
+        stem: 'Identify the correct comparative and superlative forms of "wide":',
+        options: ["wider / wideest", "more wide / most wide", "widdier / widdiest", "wider / widest"],
+        correct: 3,
+        explanationEn: 'When a one-syllable adjective ends in "-e" (wide), simply add "-r" for comparative ("wider") and "-st" for superlative ("widest").',
+        explanationAm: 'ባለ አንድ ቀለም ቅጽል በ "-e" ሲጨርስ (wide)፣ ለ Comparative "-r" ("wider") ለ Superlative ደግሞ "-st" ("widest") እንጨምራለን።'
+      },
+      {
+        id: 37,
+        unit: "Unit 1: Holidays",
+        stem: "Endenge is 1.65 m, Foziya is 1.52 m, and Bethy is 1.61 m. Endenge is _____ of the three girls.",
+        options: ["the tallest", "taller than", "as tall as", "tallest than"],
+        correct: 0,
+        explanationEn: 'When comparing three or more people, use the superlative degree preceded by "the": "the tallest".',
+        explanationAm: 'ሦስትና ከዚያ በላይ ሰዎችን ስናወዳድር ከ "the" ጋር Superlative degree ("the tallest") እንጠቀማለን።'
+      },
+      {
+        id: 38,
+        unit: "Unit 1: Holidays",
+        stem: "Mount Everest is _____ mountain on Earth.",
+        options: ["higher than", "the highest", "as high as", "highest than"],
+        correct: 1,
+        explanationEn: 'Comparing Mount Everest against all mountains on Earth requires the superlative form: "the highest".',
+        explanationAm: 'ኤቨረስትን በምድር ላይ ካሉ ተራሮች ሁሉ ጋር ስናወዳድር Superlative form ("the highest") እንጠቀማለን።'
+      },
+      {
+        id: 39,
+        unit: "Unit 1: Holidays",
+        stem: "The cheetah is _____ animal in the world.",
+        options: ["faster than", "fastest", "the fastest", "as fast as"],
+        correct: 2,
+        explanationEn: 'Superlative adjectives take "the" before the "-est" form: "the fastest".',
+        explanationAm: 'Superlative ቅጽሎች ከ "-est" ቅርጽ በፊት "the" ይወስዳሉ፤ ስለዚህ "the fastest" ትክክል ነው።'
+      },
+      {
+        id: 40,
+        unit: "Unit 1: Holidays",
+        stem: "The Nile River is _____ river in the world.",
+        options: ["longer than", "the longest than", "as long as", "the longest"],
+        correct: 3,
+        explanationEn: 'The superlative degree uses "the + adjective-est" without "than": "the longest".',
+        explanationAm: 'Superlative degree ያለ "than" "the + ቅጽል-est" ("the longest") ይጠቀማል።'
+      },
+
+      // --- UNIT 2: SIMPLE PRESENT FOR HABITS, FREQUENCY ADVERBS & WORD ORDER ---
+      {
+        id: 41,
+        unit: "Unit 2: Dry Season",
+        stem: "Ethiopian farmers usually _____ vegetables, maize, and cotton with irrigation.",
+        options: ["grow", "grows", "growing", "grew"],
+        correct: 0,
+        explanationEn: 'We use the Simple Present Tense for habitual/seasonal actions. Plural "Ethiopian farmers" takes the base verb "grow".',
+        explanationAm: 'የተለመዱ ተግባራትን ለመግለጽ Simple Present እንጠቀማለን። "Ethiopian farmers" ብዙ ስለሆነ "grow" ይወስዳል።'
+      },
+      {
+        id: 42,
+        unit: "Unit 2: Dry Season",
+        stem: "My father prepares his farmland in the dry season and _____ seeds in the rainy season.",
+        options: ["sow", "sows", "sowing", "sowes"],
+        correct: 1,
+        explanationEn: '"My father" is singular (he), matching "prepares". Adding "-s" to "sow" gives "sows".',
+        explanationAm: '"My father" ነጠላ (he) ስለሆነ ከ "prepares" ጋር በሚመሳሰል መልኩ "sow" ላይ "-s" ተጨምሮ "sows" ይሆናል።'
+      },
+      {
+        id: 43,
+        unit: "Unit 2: Dry Season",
+        stem: "Which order of frequency adverbs goes from MOST often to LEAST often?",
+        options: ["never -> often -> always", "sometimes -> usually -> always", "always -> usually -> often -> never", "rarely -> always -> seldom"],
+        correct: 2,
+        explanationEn: 'From 100% frequency down to 0%, the order is: always (100%) -> usually -> often -> sometimes -> seldom/rarely -> never (0%).',
+        explanationAm: 'ከሁሉም በላይ ከሚደጋገመው (100%) እስከ ጭራሽ የማይደረገው (0%) ቅደም ተከተል: always -> usually -> often -> never ነው።'
+      },
+      {
+        id: 44,
+        unit: "Unit 2: Dry Season",
+        stem: "Which frequency adverb CANNOT be placed at the beginning of a sentence?",
+        options: ["Usually", "Sometimes", "Often", "Never"],
+        correct: 3,
+        explanationEn: 'According to the Unit 2 Grammar Summary, all time expressions/adverbs of frequency except "never" can be placed at the beginning for emphasis.',
+        explanationAm: 'በምዕራፍ 2 ሰዋስው ማጠቃለያ መሠረት ከ "never" በስተቀር ሁሉም የድግግሞሽ ተውሳከ ግሶች ለአጽንዖት በዓረፍተ ነገር መጀመሪያ ላይ መግባት ይችላሉ።'
+      },
+      {
+        id: 45,
+        unit: "Unit 2: Dry Season",
+        stem: "Choose the sentence with the correct word order:",
+        options: ["He sometimes rides a horse.", "He rides sometimes a horse.", "Sometimes he rides never a horse.", "He rides a horse sometimesly."],
+        correct: 0,
+        explanationEn: 'One-word frequency adverbs ("sometimes") are placed between the subject ("He") and the main action verb ("rides").',
+        explanationAm: 'ባለ አንድ ቃል የድግግሞሽ ተውሳከ ግሶች ("sometimes") በባለቤቱ ("He") እና በዋናው ግስ ("rides") መካከል ይቀመጣሉ።'
+      },
+      {
+        id: 46,
+        unit: "Unit 2: Dry Season",
+        stem: "They _____ late for school because they wake up early.",
+        options: ["usually are", "are usually", "is usually", "usually is"],
+        correct: 1,
+        explanationEn: 'When the main verb is a form of "to be" (am/is/are), the frequency adverb comes AFTER the verb "to be": "are usually".',
+        explanationAm: 'ዋናው ግስ "to be" (am/is/are) ሲሆን የድግግሞሽ ተውሳከ ግሱ ከ "to be" ቀጥሎ ይመጣል ("are usually")።'
+      },
+      {
+        id: 47,
+        unit: "Unit 2: Dry Season",
+        stem: "She _____ punctual for her morning classes.",
+        options: ["always is", "always are", "is always", "are always"],
+        correct: 2,
+        explanationEn: 'With singular "She" and the verb "to be", place the frequency adverb after "is": "is always".',
+        explanationAm: 'ለነጠላዋ "She" የድግግሞሽ ተውሳከ ግሱ ከ "is" በኋላ ይገባል፤ ስለዚህ "is always" ትክክል ነው።'
+      },
+      {
+        id: 48,
+        unit: "Unit 2: Dry Season",
+        stem: "Our teacher, Mr. Yohannes, _____ late for lessons.",
+        options: ["never is", "are never", "never be", "is never"],
+        correct: 3,
+        explanationEn: '"Mr. Yohannes" is singular ("is"), and the adverb "never" follows the verb "to be": "is never".',
+        explanationAm: '"Mr. Yohannes" ነጠላ ("is") ሲሆን "never" ደግሞ ከ "is" ቀጥሎ ይቀመጣል ("is never")።'
+      },
+      {
+        id: 49,
+        unit: "Unit 2: Dry Season",
+        stem: 'Multi-word time expressions like "every Sunday" are commonly placed _____.',
+        options: ["at the end of a sentence", "between subject and verb", "after the main verb only", "before the auxiliary verb"],
+        correct: 0,
+        explanationEn: 'Unit 2 Grammar Summary states that time expressions made up of two or more words ("every Sunday") are commonly placed at the end of a sentence.',
+        explanationAm: 'በምዕራፍ 2 ሰዋስው መሠረት ከሁለትና ከዚያ በላይ ቃላት የተመሰረቱ የጊዜ መግለጫዎች ("every Sunday") በዓረፍተ ነገር መጨረሻ ላይ ይቀመጣሉ።'
+      },
+      {
+        id: 50,
+        unit: "Unit 2: Dry Season",
+        stem: "Dan plays soccer _____.",
+        options: ["twice a week always", "twice a week", "a week twice", "never twice a week"],
+        correct: 1,
+        explanationEn: '"Twice a week" is a multi-word time expression placed naturally at the end of the Simple Present sentence.',
+        explanationAm: '"Twice a week" ባለ ብዙ ቃል የጊዜ መግለጫ ስለሆነ በዓረፍተ ነገሩ መጨረሻ ላይ በትክክል ይቀመጣል።'
+      },
+
+      // --- UNIT 2: COMPARATIVE & SUPERLATIVE (2+ SYLLABLES) & WEATHER GRAMMAR ---
+      {
+        id: 51,
+        unit: "Unit 2: Dry Season",
+        stem: "Jar A is 50 kg, Jar B is 75 kg, and Jar C is 100 kg. Jar C is _____ of all.",
+        options: ["heavier than", "the heavyest", "the heaviest", "most heavy"],
+        correct: 2,
+        explanationEn: 'For two-syllable adjectives ending in consonant + "y" ("heavy"), change "y" to "i" and add "-est" with "the": "the heaviest".',
+        explanationAm: 'በተነባቢ እና በ "y" የሚጨርሱ ባለ ሁለት ቀለም ቅጽሎች ("heavy") "y"ን ወደ "i" በመቀየር "the heaviest" ይሆናሉ።'
+      },
+      {
+        id: 52,
+        unit: "Unit 2: Dry Season",
+        stem: "In Ethiopia, August is usually _____ than July.",
+        options: ["rainyer", "more rainier", "the rainiest", "rainier"],
+        correct: 3,
+        explanationEn: '"Rainy" ends in consonant + "y", so its comparative form changes "y" to "i" and adds "-er": "rainier".',
+        explanationAm: '"Rainy" በተነባቢ እና በ "y" ስለሚጨርስ በ Comparative ጊዜ "y" ወደ "i" ተቀይሮ "rainier" ይሆናል።'
+      },
+      {
+        id: 53,
+        unit: "Unit 2: Dry Season",
+        stem: "House A costs 8.5M birr, House B is 9.5M birr, and House C is 7.5M birr. House B is _____ of all.",
+        options: ["the most expensive", "more expensive", "the expensivest", "least expensive"],
+        correct: 0,
+        explanationEn: '"Expensive" has three syllables. Long adjectives (3+ syllables) form the superlative with "the most + adjective": "the most expensive".',
+        explanationAm: '"Expensive" ሦስት ቀለማት ያሉት ረጅም ቅጽል ስለሆነ Superlative ቅርጹ "the most expensive" ይሆናል።'
+      },
+      {
+        id: 54,
+        unit: "Unit 2: Dry Season",
+        stem: "House C (7.5M birr) is _____ house among the three houses.",
+        options: ["the most expensive", "the least expensive", "less expensive than", "more expensive"],
+        correct: 1,
+        explanationEn: 'Since House C has the lowest price among all three houses, we use "the least + adjective": "the least expensive".',
+        explanationAm: 'House C ከሦስቱም ቤቶች ዝቅተኛው ዋጋ ያለው ስለሆነ "the least expensive" እንጠቀማለን።'
+      },
+      {
+        id: 55,
+        unit: "Unit 2: Dry Season",
+        stem: "Reading a good book is _____ than watching television.",
+        options: ["interestinger", "most interesting", "more interesting", "the most interesting"],
+        correct: 2,
+        explanationEn: '"Interesting" is a multi-syllable adjective, so its comparative form uses "more + adjective" before "than": "more interesting".',
+        explanationAm: '"Interesting" ረጅም ቅጽል ስለሆነ በ Comparative ጊዜ "more interesting" ይሆናል።'
+      },
+      {
+        id: 56,
+        unit: "Unit 2: Dry Season",
+        stem: "Spring is _____ season of the year for most Ethiopians.",
+        options: ["more wonderful", "wonderfulest", "most wonderful than", "the most wonderful"],
+        correct: 3,
+        explanationEn: '"Wonderful" has three syllables; its superlative form requires "the most wonderful".',
+        explanationAm: '"Wonderful" ባለ ሦስት ቀለም ቅጽል ስለሆነ Superlative ቅርጹ "the most wonderful" ነው።'
+      },
+      {
+        id: 57,
+        unit: "Unit 2: Dry Season",
+        stem: "Which sentence correctly describes weather happening right now?",
+        options: ["It's raining outside.", "It's rain outside.", "It's rainy outside now.", "It's rains outside."],
+        correct: 0,
+        explanationEn: 'To describe weather happening right now, use "It is + verb-ing": "It\'s raining outside." ("It\'s rain" is a common noun error).',
+        explanationAm: 'አሁን እየሆነ ያለን የአየር ሁኔታ ለመግለጽ "It is + verb-ing" ("It\'s raining outside.") እንጠቀማለን።'
+      },
+      {
+        id: 58,
+        unit: "Unit 2: Dry Season",
+        stem: "Choose the grammatically correct weather sentence:",
+        options: ["It is sun today.", "It is sunny today.", "It is sunning today.", "It is a sunny."],
+        correct: 1,
+        explanationEn: 'We describe the weather using "It is + adjective": "It is sunny today." Using the noun "sun" ("It is sun") is incorrect.',
+        explanationAm: 'የአየር ሁኔታን ስንገልጽ "It is + ቅጽል" ("It is sunny today.") እንጠቀማለን፤ "It is sun" ማለት ስህተት ነው።'
+      },
+      {
+        id: 59,
+        unit: "Unit 2: Dry Season",
+        stem: "Take a warm coat with you; it is _____ afternoon.",
+        options: ["windy", "a wind", "a windy", "winding"],
+        correct: 2,
+        explanationEn: 'When describing a part of the day with a noun ("afternoon"), follow the pattern "It is + a + adjective + noun": "a windy afternoon".',
+        explanationAm: 'የቀኑን ክፍል ከስም ጋር ስንገልጽ "It is + a + ቅጽል + ስም" ("a windy afternoon") የሚለውን መዋቅር እንከተላለን።'
+      },
+      {
+        id: 60,
+        unit: "Unit 2: Dry Season",
+        stem: "Which sentence contains a common weather grammar error?",
+        options: ["It is snowing.", "It is snowy.", "The sun is shining.", "It is snow."],
+        correct: 3,
+        explanationEn: 'Unit 2 Common Errors warns against mixing up nouns with adjectives/verbs: "It is snow" (noun) is incorrect; use "It is snowy" or "It is snowing".',
+        explanationAm: 'በምዕራፍ 2 መሠረት "It is snow" (ስም) ማለት ስህተት ነው፤ በምትኩ "It is snowy" ወይም "It is snowing" ማለት አለብን።'
+      }
+    ];
+
+    // ==================== STATE MANAGEMENT ====================
+    let currentIndex = 0;
+    let userAnswers = new Array(quizData.length).fill(null); // stores selected option index (0-3) or null
+    let studentInfo = { name: "", id: "" };
+    let totalSecondsRemaining = 80 * 60; // 80 minutes in seconds
+    let timerInterval = null;
+    let quizStartTime = null;
+    let isSubmitted = false;
+
+    // Narrator state (British Woman Accent)
+    let narratorEnabled = true;
+    let britishFemaleVoice = null;
+
+    // Teacher Dashboard records (stored in memory during session)
+    let teacherRecords = [];
+
+    // ==================== BRITISH FEMALE NARRATOR ENGINE ====================
+    function loadBritishFemaleVoice() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices.length) return;
+
+      // Priority order for British English female voices across browsers/OS
+      const preferredNames = [
+        "Google UK English Female",
+        "Microsoft Libby Online (Natural) - English (United Kingdom)",
+        "Microsoft Sonia Online (Natural) - English (United Kingdom)",
+        "Microsoft Hazel - English (United Kingdom)",
+        "Microsoft Susan - English (United Kingdom)",
+        "Kate",
+        "Serena",
+        "Stephanie",
+        "Fiona"
+      ];
+
+      for (const name of preferredNames) {
+        const match = voices.find(v => v.name.includes(name));
+        if (match) {
+          britishFemaleVoice = match;
+          return;
+        }
+      }
+
+      // Fallback 1: Any en-GB voice that sounds female or doesn't say Male/Daniel/Arthur/George/Ryan
+      const ukFemale = voices.find(v =>
+        (v.lang === 'en-GB' || v.lang === 'en_GB') &&
+        !/male|daniel|arthur|george|ryan|oliver|thomas/i.test(v.name)
+      );
+      if (ukFemale) {
+        britishFemaleVoice = ukFemale;
+        return;
+      }
+
+      // Fallback 2: Any en-GB voice
+      const anyUk = voices.find(v => v.lang === 'en-GB' || v.lang === 'en_GB');
+      if (anyUk) {
+        britishFemaleVoice = anyUk;
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      loadBritishFemaleVoice();
+      window.speechSynthesis.onvoiceschanged = loadBritishFemaleVoice;
+    }
+
+    function speakBritish(text) {
+      if (!narratorEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      // Clean underscores for natural speech
+      const cleanText = text.replace(/_{2,}/g, " blank ");
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      if (!britishFemaleVoice) loadBritishFemaleVoice();
+      if (britishFemaleVoice) {
+        utterance.voice = britishFemaleVoice;
+      }
+      utterance.lang = 'en-GB';
+      utterance.rate = 0.96;
+      utterance.pitch = 1.08;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function toggleNarrator() {
+      narratorEnabled = !narratorEnabled;
+      const icon = document.getElementById('narratorIcon');
+      const label = document.getElementById('narratorLabel');
+      const btn = document.getElementById('narratorToggleBtn');
+
+      if (narratorEnabled) {
+        icon.className = "fa-solid fa-volume-high";
+        label.textContent = "UK Narrator: ON";
+        btn.classList.remove("bg-slate-100", "text-slate-600", "border-slate-300");
+        btn.classList.add("bg-indigo-50", "text-indigo-700", "border-indigo-200");
+        speakBritish("British narrator enabled.");
+      } else {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        icon.className = "fa-solid fa-volume-xmark";
+        label.textContent = "UK Narrator: OFF";
+        btn.classList.remove("bg-indigo-50", "text-indigo-700", "border-indigo-200");
+        btn.classList.add("bg-slate-100", "text-slate-600", "border-slate-300");
+      }
+    }
+
+    function narrateCurrentQuestion() {
+      const q = quizData[currentIndex];
+      const letters = ['A', 'B', 'C', 'D'];
+      const optionsText = q.options.map((opt, idx) => `Option ${letters[idx]}: ${opt}`).join('. ');
+      speakBritish(`Question ${q.id}. ${q.stem}. ${optionsText}`);
+    }
+
+    function narrateCurrentExplanation() {
+      const q = quizData[currentIndex];
+      const letters = ['A', 'B', 'C', 'D'];
+      speakBritish(`The correct answer is ${letters[q.correct]}, ${q.options[q.correct]}. ${q.explanationEn}`);
+    }
+
+    // ==================== CUSTOM TOAST NOTIFICATION ====================
+    let toastTimeout = null;
+    function showToast(msg, type = "info") {
+      const banner = document.getElementById('toastBanner');
+      const icon = document.getElementById('toastIcon');
+      const text = document.getElementById('toastMessage');
+
+      text.textContent = msg;
+      if (type === "success") {
+        icon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+      } else if (type === "error") {
+        icon.className = "fa-solid fa-circle-exclamation text-rose-400 text-lg";
+      } else {
+        icon.className = "fa-solid fa-circle-info text-amber-400 text-lg";
+      }
+
+      banner.classList.remove('hidden');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 4000);
+    }
+
+    // ==================== TIMER LOGIC (80 MINUTES) ====================
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        if (totalSecondsRemaining <= 0) {
+          clearInterval(timerInterval);
+          showToast("Time is up! Automatically submitting your quiz.", "error");
+          finalizeQuizSubmission();
+          return;
+        }
+        totalSecondsRemaining--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(totalSecondsRemaining / 60);
+      const secs = totalSecondsRemaining % 60;
+      const timerEl = document.getElementById('timer');
+      const formattedSecs = secs < 10 ? `0${secs}` : secs;
+      timerEl.textContent = ` Time: ${mins}m ${formattedSecs}s `;
+      if (mins < 5) {
+        timerEl.style.color = "#dc2626";
+      }
+    }
+
+    // ==================== QUIZ START & NAVIGATION ====================
+    function startQuiz() {
+      const nameInput = document.getElementById('studentName').value.trim();
+      const idInput = document.getElementById('studentId').value.trim();
+      const errEl = document.getElementById('idErrorMsg');
+
+      if (!nameInput || !idInput) {
+        errEl.classList.remove('hidden');
+        speakBritish("Please enter your full name and student ID number before starting the quiz.");
+        return;
+      }
+
+      errEl.classList.add('hidden');
+      studentInfo = { name: nameInput, id: idInput };
+      userAnswers = new Array(quizData.length).fill(null);
+      currentIndex = 0;
+      isSubmitted = false;
+      totalSecondsRemaining = 80 * 60;
+      quizStartTime = Date.now();
+
+      document.getElementById('displayStudentName').textContent = studentInfo.name;
+      document.getElementById('displayStudentId').textContent = studentInfo.id;
+
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('quizScreen').classList.remove('hidden');
+
+      buildQuestionGrid();
+      renderQuestion();
+      startTimer();
+
+      speakBritish(`Welcome ${studentInfo.name}. Let's begin the Grade 5 English Grammar Quiz.`);
+    }
+
+    function buildQuestionGrid() {
+      const grid = document.getElementById('questionGrid');
+      grid.innerHTML = "";
+      quizData.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `nav-btn-${idx}`;
+        btn.textContent = q.id;
+        btn.onclick = () => jumpToQuestion(idx);
+        btn.className = "h-8 w-full rounded-lg text-xs font-bold transition flex items-center justify-center border";
+        grid.appendChild(btn);
+      });
+      updateQuestionGrid();
+    }
+
+    function updateQuestionGrid() {
+      quizData.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (!btn) return;
+        const ans = userAnswers[idx];
+        let base = "h-8 w-full rounded-lg text-xs font-bold transition flex items-center justify-center border ";
+
+        if (ans === null) {
+          base += "bg-slate-100 text-slate-700 border-slate-200 hover:bg-indigo-50 ";
+        } else if (ans === q.correct) {
+          base += "bg-emerald-500 text-white border-emerald-600 ";
+        } else {
+          base += "bg-rose-500 text-white border-rose-600 ";
+        }
+
+        if (idx === currentIndex) {
+          base += "ring-2 ring-indigo-600 ring-offset-1 scale-105 ";
+        }
+        btn.className = base;
+      });
+    }
+
+    function renderQuestion() {
+      const q = quizData[currentIndex];
+      const selected = userAnswers[currentIndex];
+      const isAnswered = selected !== null;
+
+      // Update badges & question stem
+      document.getElementById('qNumberBadge').textContent = `Question ${q.id} of ${quizData.length}`;
+      document.getElementById('qUnitBadge').textContent = q.unit;
+      document.getElementById('questionText').textContent = q.stem;
+
+      const lockBadge = document.getElementById('lockStatusBadge');
+      if (isAnswered) {
+        lockBadge.classList.remove('hidden');
+      } else {
+        lockBadge.classList.add('hidden');
+      }
+
+      // Render clickable option buttons (irreversible once selected)
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = "";
+      const letters = ['A', 'B', 'C', 'D'];
+
+      q.options.forEach((optionText, optIdx) => {
+        const btn = document.createElement('button');
+        btn.type = "button";
+        btn.disabled = isAnswered; // Irreversible answer enforcement!
+
+        let btnStyle = "w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between gap-3 ";
+        let badgeStyle = "w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 ";
+        let statusIcon = "";
+
+        if (!isAnswered) {
+          btnStyle += "bg-white hover:bg-indigo-50/80 border-slate-200 hover:border-indigo-400 text-slate-800 cursor-pointer shadow-sm active:scale-[0.99]";
+          badgeStyle += "bg-indigo-100 text-indigo-700";
+        } else {
+          btnStyle += "cursor-not-allowed ";
+          if (optIdx === q.correct) {
+            // Highlight correct answer in emerald green
+            btnStyle += "bg-emerald-50 border-emerald-500 text-emerald-950 shadow-md";
+            badgeStyle += "bg-emerald-600 text-white";
+            statusIcon = '<span class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold flex items-center gap-1 shrink-0"><i class="fa-solid fa-check"></i> Correct</span>';
+          } else if (optIdx === selected && selected !== q.correct) {
+            // Highlight wrong selected answer in rose red
+            btnStyle += "bg-rose-50 border-rose-500 text-rose-950 shadow-md";
+            badgeStyle += "bg-rose-600 text-white";
+            statusIcon = '<span class="px-2.5 py-1 rounded-lg bg-rose-600 text-white text-xs font-bold flex items-center gap-1 shrink-0"><i class="fa-solid fa-xmark"></i> Your Choice</span>';
+          } else {
+            btnStyle += "bg-slate-50/70 border-slate-200 text-slate-400 opacity-70";
+            badgeStyle += "bg-slate-200 text-slate-500";
+          }
+        }
+
+        btn.className = btnStyle;
+        btn.innerHTML = `
+          <div class="flex items-center gap-3.5">
+            <span class="${badgeStyle}">${letters[optIdx]}</span>
+            <span class="font-semibold text-base">${optionText}</span>
+          </div>
+          ${statusIcon}
+        `;
+
+        if (!isAnswered) {
+          btn.onclick = () => selectOption(optIdx);
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+
+      // Render Instant Feedback & Bilingual Explanation if answered
+      const feedbackPanel = document.getElementById('feedbackPanel');
+      const feedbackTitle = document.getElementById('feedbackBannerTitle');
+      if (isAnswered) {
+        feedbackPanel.classList.remove('hidden');
+        const isCorrect = selected === q.correct;
+        if (isCorrect) {
+          feedbackPanel.className = "mt-6 rounded-2xl p-5 border-2 bg-emerald-50/90 border-emerald-300 animate-pop";
+          feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i> <span class="text-emerald-800">Well done! Correct Answer (${letters[q.correct]}).</span>`;
+        } else {
+          feedbackPanel.className = "mt-6 rounded-2xl p-5 border-2 bg-rose-50/90 border-rose-300 animate-pop";
+          feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-xl"></i> <span class="text-rose-800">Incorrect! You chose ${letters[selected]}. The correct answer is ${letters[q.correct]}.</span>`;
+        }
+        document.getElementById('explanationEn').textContent = q.explanationEn;
+        document.getElementById('explanationAm').textContent = q.explanationAm;
+      } else {
+        feedbackPanel.classList.add('hidden');
+      }
+
+      // Update Navigation Buttons
+      document.getElementById('backBtn').disabled = currentIndex === 0;
+      document.getElementById('nextBtn').disabled = currentIndex === quizData.length - 1;
+      if (currentIndex === quizData.length - 1) {
+        document.getElementById('nextBtn').classList.add('opacity-50');
+      } else {
+        document.getElementById('nextBtn').classList.remove('opacity-50');
+      }
+
+      updateStatsAndProgress();
+      updateQuestionGrid();
+    }
+
+    function selectOption(optIdx) {
+      // Enforce irreversibility: if already answered, do nothing
+      if (userAnswers[currentIndex] !== null) return;
+
+      userAnswers[currentIndex] = optIdx;
+      const q = quizData[currentIndex];
+      const letters = ['A', 'B', 'C', 'D'];
+      const isCorrect = optIdx === q.correct;
+
+      renderQuestion();
+
+      if (isCorrect) {
+        speakBritish(`Correct! ${q.options[q.correct]}. ${q.explanationEn}`);
+      } else {
+        speakBritish(`Incorrect. The correct answer is ${letters[q.correct]}, ${q.options[q.correct]}. ${q.explanationEn}`);
+      }
+    }
+
+    function updateStatsAndProgress() {
+      let score = 0;
+      let answered = 0;
+      userAnswers.forEach((ans, idx) => {
+        if (ans !== null) {
+          answered++;
+          if (ans === quizData[idx].correct) score++;
+        }
+      });
+
+      document.getElementById('liveScore').textContent = score;
+      document.getElementById('answeredCount').textContent = answered;
+      const pct = Math.max(1.66, (answered / quizData.length) * 100);
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      if (currentIndex < quizData.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    function skipQuestion() {
+      // Jump to next unanswered question (wraps around if needed)
+      for (let offset = 1; offset <= quizData.length; offset++) {
+        const candidate = (currentIndex + offset) % quizData.length;
+        if (userAnswers[candidate] === null) {
+          currentIndex = candidate;
+          renderQuestion();
+          showToast(`Jumped to unanswered Question ${quizData[currentIndex].id}.`, "info");
+          return;
+        }
+      }
+      // If all 60 are answered, move to next or notify
+      if (currentIndex < quizData.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      } else {
+        showToast("All 60 questions have been answered! Click 'Submit Quiz' when ready.", "success");
+      }
+    }
+
+    function jumpToQuestion(idx) {
+      currentIndex = idx;
+      renderQuestion();
+    }
+
+    // ==================== SUBMISSION & AUTO-GRADING ====================
+    function confirmAndSubmitQuiz() {
+      const unanswered = userAnswers.filter(a => a === null).length;
+      const msgEl = document.getElementById('confirmSubmitText');
+      if (unanswered > 0) {
+        msgEl.innerHTML = `You still have <strong class="text-rose-600">${unanswered} unanswered question(s)</strong> out of 60. Unanswered items will be graded as 0. Do you want to submit now?`;
+      } else {
+        msgEl.textContent = "You have answered all 60 questions! Click 'Yes, Submit Now' to view your final auto-graded score and send it to your teacher.";
+      }
+      document.getElementById('confirmSubmitModal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirmSubmitModal').classList.add('hidden');
+    }
+
+    function finalizeQuizSubmission() {
+      closeConfirmModal();
+      if (timerInterval) clearInterval(timerInterval);
+      isSubmitted = true;
+
+      let correctCount = 0;
+      let wrongCount = 0;
+      let skippedCount = 0;
+
+      userAnswers.forEach((ans, idx) => {
+        if (ans === null) {
+          skippedCount++;
+        } else if (ans === quizData[idx].correct) {
+          correctCount++;
+        } else {
+          wrongCount++;
+        }
+      });
+
+      const percentage = ((correctCount / quizData.length) * 100).toFixed(1);
+      const elapsedSec = Math.max(1, Math.floor((Date.now() - quizStartTime) / 1000));
+      const elapsedMins = Math.floor(elapsedSec / 60);
+      const remSecs = elapsedSec % 60;
+      const timeTakenStr = `${elapsedMins}m ${remSecs}s`;
+      const passed = parseFloat(percentage) >= 50;
+
+      // Populate Result Screen
+      document.getElementById('resName').textContent = studentInfo.name;
+      document.getElementById('resId').textContent = studentInfo.id;
+      document.getElementById('resTimeTaken').textContent = timeTakenStr;
+      const statusEl = document.getElementById('resStatus');
+      statusEl.textContent = passed ? "PASSED (Satisfactory)" : "NEEDS IMPROVEMENT";
+      statusEl.className = passed ? "text-base font-extrabold text-emerald-600" : "text-base font-extrabold text-rose-600";
+
+      document.getElementById('resScoreFraction').textContent = `${correctCount} / 60`;
+      document.getElementById('resPercentage').textContent = `${percentage}%`;
+      document.getElementById('resWrongCount').textContent = wrongCount;
+      document.getElementById('resSkippedCount').textContent = skippedCount;
+
+      // Record in Teacher Dashboard
+      const submissionRecord = {
+        name: studentInfo.name,
+        id: studentInfo.id,
+        score: correctCount,
+        total: quizData.length,
+        percentage: parseFloat(percentage),
+        wrong: wrongCount,
+        skipped: skippedCount,
+        timeTaken: timeTakenStr,
+        timestamp: new Date().toLocaleString()
+      };
+      teacherRecords.unshift(submissionRecord);
+      updateTeacherDashboard();
+
+      // Switch Views
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+      buildFullReviewList();
+
+      speakBritish(`Congratulations ${studentInfo.name}. You have completed the quiz. Your final score is ${correctCount} out of 60, which is ${percentage} percent.`);
+    }
+
+    function buildFullReviewList() {
+      const container = document.getElementById('reviewItemsList');
+      container.innerHTML = "";
+      const letters = ['A', 'B', 'C', 'D'];
+
+      quizData.forEach((q, idx) => {
+        const userAns = userAnswers[idx];
+        const isCorrect = userAns === q.correct;
+        const statusBadge = userAns === null
+          ? `<span class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold">Skipped</span>`
+          : isCorrect
+            ? `<span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 text-xs font-bold">Correct</span>`
+            : `<span class="px-2.5 py-1 rounded-lg bg-rose-100 text-rose-800 text-xs font-bold">Incorrect</span>`;
+
+        const card = document.createElement('div');
+        card.className = "p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-2.5";
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div class="font-bold text-slate-900 text-sm sm:text-base">${q.id}. ${q.stem}</div>
+            ${statusBadge}
+          </div>
+          <div class="text-xs sm:text-sm flex flex-wrap gap-4">
+            <span>Your Answer: <strong class="${isCorrect ? 'text-emerald-700' : 'text-rose-700'}">${userAns !== null ? letters[userAns] + '. ' + q.options[userAns] : 'None'}</strong></span>
+            <span>Correct Answer: <strong class="text-emerald-700">${letters[q.correct]}. ${q.options[q.correct]}</strong></span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 text-xs">
+            <div class="bg-white p-3 rounded-xl border border-slate-200">
+              <strong class="text-indigo-600 block mb-0.5">English Explanation:</strong>
+              <span class="text-slate-700">${q.explanationEn}</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-200 ethiopic">
+              <strong class="text-emerald-700 block mb-0.5">የአማርኛ ማብራሪያ:</strong>
+              <span class="text-slate-800">${q.explanationAm}</span>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleReviewList() {
+      const box = document.getElementById('fullReviewContainer');
+      const btnText = document.getElementById('reviewToggleText');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        btnText.textContent = "Hide Detailed Review";
+      } else {
+        box.classList.add('hidden');
+        btnText.textContent = "Review All 60 Questions & Explanations";
+      }
+    }
+
+    // ==================== EMAIL SUBMISSION TO mesayferedegn2@gmail.com ====================
+    function generateReportText(record = null) {
+      const r = record || teacherRecords[0];
+      if (!r) return "";
+      return [
+        "YT TUTORIAL CENTER — GRADE 5 ENGLISH GRAMMAR QUIZ RESULT",
+        "==========================================================",
+        `Student Full Name : ${r.name}`,
+        `Student ID Number : ${r.id}`,
+        `Quiz Scope        : Grade 5 English — Units 1 & 2 (60 MCQs)`,
+        `Final Score       : ${r.score} / ${r.total} (${r.percentage}%)`,
+        `Incorrect Items   : ${r.wrong}`,
+        `Unanswered Items  : ${r.skipped}`,
+        `Time Taken        : ${r.timeTaken}`,
+        `Date & Time       : ${r.timestamp}`,
+        "==========================================================",
+        "Submitted via YT Tutorial Center Interactive Quiz System (0967029123)"
+      ].join("\n");
+    }
+
+    function sendScoreViaEmail(record = null) {
+      const r = record || teacherRecords[0];
+      if (!r) return;
+      const recipient = "mesayferedegn2@gmail.com";
+      const subject = encodeURIComponent(`Grade 5 English Quiz Score: ${r.name} (ID: ${r.id}) - ${r.score}/60 (${r.percentage}%)`);
+      const body = encodeURIComponent(generateReportText(r));
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      showToast(`Opening your email client to send results to ${recipient}...`, "success");
+    }
+
+    function copyScoreReport() {
+      const text = generateReportText();
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand('copy');
+        showToast("Score report copied! You can paste and send it to mesayferedegn2@gmail.com.", "success");
+      } catch (err) {
+        showToast("Unable to copy automatically. Please use the Email Score button.", "error");
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    // ==================== TEACHER DASHBOARD LOGIC ====================
+    function openTeacherModal() {
+      updateTeacherDashboard();
+      document.getElementById('teacherModal').classList.remove('hidden');
+    }
+
+    function closeTeacherModal() {
+      document.getElementById('teacherModal').classList.add('hidden');
+    }
+
+    function updateTeacherDashboard() {
+      const count = teacherRecords.length;
+      document.getElementById('teacherBadgeCount').textContent = count;
+      document.getElementById('tdTotalStudents').textContent = count;
+
+      const tbody = document.getElementById('teacherTableBody');
+      if (count === 0) {
+        document.getElementById('tdAvgScore').textContent = "0%";
+        document.getElementById('tdHighScore').textContent = "0 / 60";
+        tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-400 text-sm">No student submissions recorded yet in this session.</td></tr>`;
+        return;
+      }
+
+      const avg = (teacherRecords.reduce((acc, r) => acc + r.percentage, 0) / count).toFixed(1);
+      const maxScore = Math.max(...teacherRecords.map(r => r.score));
+      document.getElementById('tdAvgScore').textContent = `${avg}%`;
+      document.getElementById('tdHighScore').textContent = `${maxScore} / 60`;
+
+      tbody.innerHTML = "";
+      teacherRecords.forEach((rec, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50 transition";
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-slate-500">${idx + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${rec.name}</td>
+          <td class="py-3 px-4 font-semibold text-indigo-700">${rec.id}</td>
+          <td class="py-3 px-4 font-extrabold text-slate-900">${rec.score} / ${rec.total}</td>
+          <td class="py-3 px-4">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${rec.percentage >= 50 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+              ${rec.percentage}%
+            </span>
+          </td>
+          <td class="py-3 px-4 text-xs text-slate-500">${rec.timestamp}</td>
+          <td class="py-3 px-4 text-right">
+            <button onclick='sendScoreViaEmail(${JSON.stringify(rec)})'
+              class="px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs transition">
+              <i class="fa-solid fa-envelope mr-1"></i> Email
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function exportTeacherCSV() {
+      if (teacherRecords.length === 0) {
+        showToast("No student scores available to export yet.", "error");
+        return;
+      }
+      const headers = ["Student Name", "Student ID", "Score", "Total", "Percentage", "Incorrect", "Unanswered", "Time Taken", "Timestamp"];
+      const rows = teacherRecords.map(r => [
+        `"${r.name.replace(/"/g, '""')}"`,
+        `"${r.id.replace(/"/g, '""')}"`,
+        r.score,
+        r.total,
+        `${r.percentage}%`,
+        r.wrong,
+        r.skipped,
+        `"${r.timeTaken}"`,
+        `"${r.timestamp}"`
+      ]);
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Grade5_English_Units1_2_Results.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("Teacher CSV summary downloaded!", "success");
+    }
+
+    function resetForNewStudent() {
+      if (timerInterval) clearInterval(timerInterval);
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      totalSecondsRemaining = 80 * 60;
+      document.getElementById('timer').textContent = " Time: 80m ";
+      document.getElementById('studentName').value = "";
+      document.getElementById('studentId').value = "";
+      document.getElementById('fullReviewContainer').classList.add('hidden');
+      document.getElementById('reviewToggleText').textContent = "Review All 60 Questions & Explanations";
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
